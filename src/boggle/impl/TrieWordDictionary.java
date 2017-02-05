@@ -17,13 +17,13 @@ class TrieNode {
 
     public char wordLetter;
     public boolean isRoot;
-    public boolean isCompleteWorld;
+    public boolean isCompleteWord;
     public TrieNode[] children;
 
-    TrieNode(char wordLetter, boolean isCompleteWorld, boolean isRoot) {
+    TrieNode(char wordLetter, boolean isCompleteWord, boolean isRoot) {
         this.wordLetter = wordLetter;
         this.isRoot = isRoot;
-        this.isCompleteWorld = isCompleteWorld;
+        this.isCompleteWord = isCompleteWord;
         this.children = new TrieNode[ChildCount];
     }
 
@@ -123,7 +123,7 @@ class TrieWordDictIter implements IWordDictIter {
                         this.workingWordChars.add(nextSibling);
 
                         // if we have found a complete word, then we can stop traversing
-                        if (nextSibling.isCompleteWorld) {
+                        if (nextSibling.isCompleteWord) {
                             CacheWorkingWord();
                             return;
                         }
@@ -138,7 +138,7 @@ class TrieWordDictIter implements IWordDictIter {
                 this.workingWordChars.add(firstChild);
 
                 // if we have found a complete word, then we can stop traversing
-                if (firstChild.isCompleteWorld) {
+                if (firstChild.isCompleteWord) {
                     CacheWorkingWord();
                     return;
                 }

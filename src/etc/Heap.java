@@ -35,13 +35,15 @@ public class Heap {
     }
 
     public void bubbleUpIndex(int index) {
-        while (index != 0) {
+        while (index > 0) {
             int parentIndex = getParentIndex(index);
             if (heapValues.get(parentIndex) > heapValues.get(index)) {
                 int tmp = heapValues.get(parentIndex);
                 heapValues.set(parentIndex, heapValues.get(index));
                 heapValues.set(index, tmp);
                 index = parentIndex;
+            } else {
+                break;
             }
         }
     }
@@ -77,7 +79,7 @@ public class Heap {
         int lastValue = heapValues.remove(lastIndex);
         if (index != lastIndex) {
             heapValues.set(index, lastValue);
-            if (index != 0) {
+            if (index > 0) {
                 int parentIndex = getParentIndex(index);
                 if (heapValues.get(parentIndex) > lastValue) {
                     bubbleUpIndex(index);
